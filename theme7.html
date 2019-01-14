@@ -13,8 +13,8 @@
  |
  |  Theme #7 by raiidens (@ tumblr)
  |  Published November 2015
- |  Updated December 2015
- |  Ver. 1.01
+ |  Updated February 2016
+ |  Ver. 1.02
  |
  |  Edit as much as you like, but please do not
  |  claim as your own work, and leave credit somewhere.
@@ -105,7 +105,7 @@
 <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 
 {block:IfInfiniteScrolling}
-<script type="text/javascript" src="http://codysherman.tumblr.com/tools/infinite-scrolling/code"></script>
+<script type="text/javascript" src="http://static.tumblr.com/o4povtk/zYLo1itkm/codyshermaninfscroll.js"></script>
 {/block:IfInfiniteScrolling}
 
 <style type="text/css">
@@ -123,16 +123,17 @@
  
 ::-webkit-scrollbar-thumb {background-color:{color:Scrollbar};}
  
-iframe#tumblr_controls {
+.tmblr-iframe {
     right:3px !important;
     position:fixed !important;
     opacity: 0.3;
+	z-index: 999999 !important;
     -webkit-transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
 }
-iframe#tumblr_controls:hover {opacity: 1.0;}
+.tmblr-iframe:hover {opacity: 1.0;}
 ::selection {background-color:{color:Text highlight background}; color:{color:Text highlight};}
 ::-moz-selection {background-color:{color:Text highlight background}; color:{color:Text highlight};}
 ::-webkit-selection {background-color:{color:Text highlight background}; color:{color:Text highlight};}
@@ -727,17 +728,18 @@ ol.notes li.note{
             {/block:PermalinkPage}
             {/block:IfNotShowCaptions}
             {/block:Video}
- 
-            {block:Audio}
+			
+			{block:Audio}
             <div class="audio">
-            {block:AlbumArt}
-            <img src="{AlbumArtURL}">
-            {/block:AlbumArt}
-            {AudioPlayer}
-            {block:trackname}<div class="aline"><b>track name:</b> {trackname}</div>{/block:trackname}
+            {block:AlbumArt}<div style="float:left;"><img src="{AlbumArtURL}" width="150" height="150"></div>{/block:AlbumArt}
+            <div style="position:relative; left:10px; top:5px">
+    {block:trackname}<div class="aline"><b>track name:</b> {trackname}</div>{/block:trackname}
             {block:artist}<div class="aline"><b>artist:</b> {artist}</div>{/block:artist}
             {block:album}<div class="aline"><b>album:</b> {album}</div>{/block:album}
             {block:playcount}<div class="aline"><b>play count:</b> {playcount}</div>{/block:playcount}
+            </div>
+            <div style="clear:both;"></div>
+            {block:AudioPlayer}{AudioPlayerBlack}{/block:AudioPlayer}
             {block:IfShowCaptions}
             {block:Caption}
             <div class="caption">{Caption}</div>
